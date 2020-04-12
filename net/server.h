@@ -25,7 +25,7 @@ public:
     void Destroy();
 
 private:
-    CoNet::Socket* _accept;
+    CoNet::Socket* _accept{nullptr};
 };
 
 } // namespace Net
