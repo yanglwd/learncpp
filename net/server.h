@@ -3,6 +3,7 @@
 #include <string>
 #include <thread>
 
+#include "../co_net/sock.h"
 #include "../utility/singleton.h"
 
 namespace Net
@@ -13,7 +14,6 @@ struct ServerOption {
     uint16_t listenPort{0};
 };
 
-template <int E, int C>
 class Server : public Utility::Singleton<Server>
 {
 public:
@@ -25,6 +25,7 @@ public:
     void Destroy();
 
 private:
+    CoNet::Socket* _accept;
 };
 
 } // namespace Net
