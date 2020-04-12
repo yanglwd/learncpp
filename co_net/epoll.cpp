@@ -5,11 +5,13 @@
 
 #include "epoll.h"
 
-namespace CoNet {
+namespace CoNet
+{
 
 const int MAX_FD_SIZE = 8 * 1024;
 
-bool Epoll::Init() {
+bool Epoll::Init()
+{
     signal(SIGPIPE, SIG_IGN);
 
     _efd = epoll_create1(EPOLL_CLOEXEC);
@@ -19,7 +21,8 @@ bool Epoll::Init() {
     return true;
 }
 
-void Epoll::Loop() {
+void Epoll::Loop()
+{
     int cnt = 0;
     epoll_event evts[MAX_FD_SIZE];
     for (;;) {
@@ -27,11 +30,13 @@ void Epoll::Loop() {
     }
 }
 
-void Epoll::Destroy() {
+void Epoll::Destroy()
+{
     close(_efd);
 }
 
-bool Epoll::Add(int fd) {
+bool Epoll::Add(int fd)
+{
     try {
         epoll_event evt;
         evt.data.fd = fd;
@@ -44,11 +49,13 @@ bool Epoll::Add(int fd) {
     return false;
 }
 
-bool Epoll::Mod(int fd) {
+bool Epoll::Mod(int fd)
+{
     return false;
 }
 
-bool Epoll::Del(int fd) {
+bool Epoll::Del(int fd)
+{
     try {
         return -1 == epoll_ctl(_efd, EPOLL_CTL_ADD, fd, nullptr);
     } catch (const std::exception&) {

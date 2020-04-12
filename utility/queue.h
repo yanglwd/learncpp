@@ -3,18 +3,20 @@
 #include <list>
 #include <mutex>
 
-namespace Utility {
+namespace Utility
+{
 
 template <typename T>
-class Queue : public NoCopy {
-  public:
+class Queue : public NoCopy
+{
+public:
     Queue() = default;
     ~Queue() { _Destroy(); }
 
     void Push(T& data);
     T Pop();
 
-  private:
+private:
     void _Destroy() { _valid = false; }
 
     std::list<T> _queue;
@@ -22,7 +24,8 @@ class Queue : public NoCopy {
 };
 
 template <typename T>
-void Queue<T>::Push(T& data) {
+void Queue<T>::Push(T& data)
+{
     std::lock_guard lg(_mtx);
     if (!_valid) {
         return
@@ -32,7 +35,8 @@ void Queue<T>::Push(T& data) {
 }
 
 template <typename T>
-T Queue<T>::Pop() {
+T Queue<T>::Pop()
+{
     std::lock_guard lg(_mtx);
     if (!_valid) {
         return

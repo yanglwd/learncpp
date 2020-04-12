@@ -5,17 +5,18 @@
 
 #include "../utility/singleton.h"
 
-namespace Net {
+namespace Net
+{
 
 struct ServerOption {
     std::string listenAddr;
     uint16_t listenPort{0};
-    int epollCount{1};
-    int epollCapacity{8 * 1024};
 };
 
-class Server : public Utility::Singleton<Server> {
-  public:
+template <int E, int C>
+class Server : public Utility::Singleton<Server>
+{
+public:
     Server() = default;
     ~Server() = default;
 
@@ -23,7 +24,7 @@ class Server : public Utility::Singleton<Server> {
     void Loop();
     void Destroy();
 
-  private:
+private:
 };
 
 } // namespace Net

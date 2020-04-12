@@ -2,7 +2,8 @@
 
 #include <stdint.h>
 
-namespace def {
+namespace def
+{
 
 typedef uint64_t USER_ID;
 

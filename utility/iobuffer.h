@@ -2,14 +2,16 @@
 
 #include <memory>
 
-namespace Utility {
+namespace Utility
+{
 
-class IOBuffer {
-  public:
+class IOBuffer
+{
+public:
     IOBuffer(char* data, int size) { _buffer = std::unique_ptr<char>(new char[size]); }
     char* Get() { return _buffer.get(); }
 
-  private:
+private:
     std::unique_ptr<char> _buffer;
 };
 

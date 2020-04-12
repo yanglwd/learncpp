@@ -3,9 +3,11 @@
 
 #include "sock.h"
 
-namespace CoNet {
+namespace CoNet
+{
 
-bool Socket::Init() {
+bool Socket::Init()
+{
     int tmp = socket(AF_INET, SOCK_STREAM, 0);
     if (-1 == tmp) {
         return false;

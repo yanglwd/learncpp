@@ -5,12 +5,9 @@ IndentWidth: 4
 ColumnLimit: 0
 DerivePointerAlignment: true
 SpacesInContainerLiterals: false
-ObjCSpaceAfterProperty: true
-ObjCBlockIndentWidth: 4
-AllowShortIfStatementsOnASingleLine: true
 SpaceBeforeAssignmentOperators: true
-PointerAlignment: Right
 MaxEmptyLinesToKeep: 1
 AlignTrailingComments: true
-SpaceAfterCStyleCast: true
+AccessModifierOffset: -4
+BreakBeforeBraces: Linux
 ...
