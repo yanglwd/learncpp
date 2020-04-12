@@ -1,22 +1,18 @@
 #pragma once
 
-#include <sys/epoll.h>
 #include <functional>
+#include <sys/epoll.h>
 
 #include "../utility/nocopy.h"
 
-namespace CoNet
-{
+namespace CoNet {
 
-struct Event
-{
-    std::function<bool(int,Event*)> Callback;
+struct Event {
+    std::function<bool(int, Event*)> Callback;
 };
 
-
-class Epoll : public Utility::NoCopy
-{
-public:
+class Epoll : public Utility::NoCopy {
+  public:
     Epoll() = default;
     ~Epoll() = default;
 
@@ -28,8 +24,8 @@ public:
     bool Mod(int fd);
     bool Del(int fd);
 
-private:
+  private:
     int _efd{-1};
 };
 
-}
+} // namespace CoNet

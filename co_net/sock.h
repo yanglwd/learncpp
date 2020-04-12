@@ -2,20 +2,18 @@
 
 #include "../utility/nocopy.h"
 
-namespace CoNet
-{
+namespace CoNet {
 
-class Socket : public Utility::NoCopy
-{
-public:
+class Socket : public Utility::NoCopy {
+  public:
     Socket() = default;
     ~Socket() = default;
 
     bool Init();
-    int Fd() {return _fd;}
+    int Fd() { return _fd; }
 
-private:
+  private:
     int _fd;
 };
 
-}
+} // namespace CoNet

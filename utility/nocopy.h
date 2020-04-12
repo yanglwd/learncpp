@@ -1,14 +1,12 @@
 #pragma once
 
-namespace Utility
-{
+namespace Utility {
 
-class NoCopy
-{
-public:
+class NoCopy {
+  public:
     NoCopy(const NoCopy&) = delete;
     NoCopy(NoCopy&&) = delete;
-    NoCopy& operator= (const NoCopy&) = delete;
+    NoCopy& operator=(const NoCopy&) = delete;
 };
 
-}
+} // namespace Utility
