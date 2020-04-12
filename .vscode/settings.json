@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "mutex": "cpp",
+        "string": "cpp",
+        "cstdint": "cpp",
+        "deque": "cpp",
+        "*.tcc": "cpp"
+    }
+}
