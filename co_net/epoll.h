@@ -9,10 +9,6 @@
 namespace CoNet
 {
 
-struct Event {
-    std::function<bool(int, Event*)> Callback;
-};
-
 class Epoll : public Utility::NoCopy
 {
 public:

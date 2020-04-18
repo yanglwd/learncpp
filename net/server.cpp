@@ -1,3 +1,6 @@
+#include <string.h>
+#include <sys/socket.h>
+
 #include "server.h"
 
 namespace Net
@@ -5,7 +8,6 @@ namespace Net
 
 bool Server::Init(const ServerOption& opt)
 {
-    _accept = new (CoNet::Socket);
 
     return true;
 }

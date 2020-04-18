@@ -3,14 +3,14 @@
 #include <string>
 #include <thread>
 
-#include "../co_net/sock.h"
 #include "../utility/singleton.h"
+#include "accept.h"
 
 namespace Net
 {
 
 struct ServerOption {
-    std::string listenAddr;
+    std::string listenAddr{"0.0.0.0"};
     uint16_t listenPort{0};
 };
 
@@ -25,7 +25,7 @@ public:
     void Destroy();
 
 private:
-    CoNet::Socket* _accept{nullptr};
+    Acceptor* _accept;
 };
 
 } // namespace Net

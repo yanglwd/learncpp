@@ -41,7 +41,7 @@ bool Epoll::Add(int fd)
         epoll_event evt;
         evt.data.fd = fd;
         evt.events = EPOLLIN | EPOLLET;
-        return -1 == epoll_ctl(_efd, EPOLL_CTL_ADD, fd, &evt);
+        return 0 == epoll_ctl(_efd, EPOLL_CTL_ADD, fd, &evt);
     } catch (const std::exception&) {
         // TODO
     }
@@ -57,7 +57,7 @@ bool Epoll::Mod(int fd)
 bool Epoll::Del(int fd)
 {
     try {
-        return -1 == epoll_ctl(_efd, EPOLL_CTL_ADD, fd, nullptr);
+        return 0 == epoll_ctl(_efd, EPOLL_CTL_ADD, fd, nullptr);
     } catch (const std::exception&) {
         // TODO
     }
