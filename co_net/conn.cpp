@@ -15,13 +15,20 @@ Conn::~Conn()
     }
 }
 
-bool Conn::_Send(char* data, int len)
+bool Conn::Send(char* data, int len)
 {
-    return true;
+    if (nullptr == _socket) {
+        return false;
+    }
+
+    return _socket->Send(data, len);
 }
 
-bool Conn::_Recv(char* data, int len)
+bool Conn::Recv(char* data, int len)
 {
+    if (nullptr == _socket) {
+        return false;
+    }
     return true;
 }
 

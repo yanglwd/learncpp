@@ -2,9 +2,10 @@
 
 #include <string>
 #include <thread>
+#include <unordered_map>
 
+#include "../co_net/sock.h"
 #include "../utility/singleton.h"
-#include "accept.h"
 
 namespace Net
 {
@@ -25,7 +26,16 @@ public:
     void Destroy();
 
 private:
-    Acceptor* _accept;
+    bool _Listen(std::string addr, uint16_t port);
+
+private:
+    using SOCK_PTR = std::shared_ptr<CoNet::Socket>;
+    using SOCK_MAP = std::unordered_map<uint32_t, SOCK_PTR>;
+    using EPOLL_PTR = std::shared_ptr<CoNet::Epoll>;
+
+    EPOLL_PTR _ep;
+    SOCK_PTR _accept;
+    SOCK_MAP _conns;
 };
 
 } // namespace Net

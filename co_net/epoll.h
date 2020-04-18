@@ -1,8 +1,7 @@
 #pragma once
 
-#include <sys/epoll.h>
-
 #include <functional>
+#include <sys/epoll.h>
 
 #include "../utility/nocopy.h"
 
