@@ -20,16 +20,6 @@ public:
 
     int Fd() { return _fd; }
 
-    bool Send(char* data, uint32_t len);
-    bool Recv(char* buffer, uint32_t& len);
-
-private:
-    void _OnIn();
-    void _WaitIn();
-
-    void _OnOut();
-    void _WaitOut();
-
 private:
     static int SendBufferSize;
     static int RecvBufferSize;
