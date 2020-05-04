@@ -12,8 +12,8 @@ namespace CoNet
 class Socket : public Utility::NoCopy
 {
 public:
-    Socket(std::shared_ptr<Epoll> ep);
-    ~Socket();
+    Socket() = default;
+    ~Socket() { Destroy(); }
 
     bool Init();
     void Destroy();
@@ -27,7 +27,9 @@ private:
     static int RecvLowAt;
 
     int _fd;
-    std::weak_ptr<Epoll> _epoll;
 };
+
+// using SHARED_SOCK = std::shared_ptr<Socket>;
+// using WEAK_SOCK = std::weak_ptr<Socket>;
 
 } // namespace CoNet

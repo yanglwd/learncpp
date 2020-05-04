@@ -4,9 +4,15 @@
 #include <sys/epoll.h>
 
 #include "../utility/nocopy.h"
+#include "conn.h"
 
 namespace CoNet
 {
+
+struct ConnEvent {
+    Conn* conn;
+    bool  accept;
+};
 
 class Epoll : public Utility::NoCopy
 {
@@ -17,10 +23,9 @@ public:
     bool Init();
     void Loop();
     void Destroy();
-
-    bool Add(int fd);
-    bool Mod(int fd);
-    bool Del(int fd);
+    bool Add(ConnEvent* ce);
+    bool Mod(ConnEvent* ce);
+    bool Del(ConnEvent* ce);
 
 private:
     int _efd{-1};

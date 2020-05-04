@@ -23,7 +23,7 @@ bool Epoll::Init()
 
 void Epoll::Loop()
 {
-    int cnt = 0;
+    int         cnt = 0;
     epoll_event evts[MAX_FD_SIZE];
     for (;;) {
         cnt = epoll_wait(_efd, evts, MAX_FD_SIZE, -1);
@@ -35,13 +35,17 @@ void Epoll::Destroy()
     close(_efd);
 }
 
-bool Epoll::Add(int fd)
+bool Epoll::Add(ConnEvent* ce)
 {
+    if (nullptr == ce || nullptr == ce->conn) {
+        return false;
+    }
+
     try {
         epoll_event evt;
-        evt.data.fd = fd;
+        evt.data.ptr = ce;
         evt.events = EPOLLIN | EPOLLET;
-        return 0 == epoll_ctl(_efd, EPOLL_CTL_ADD, fd, &evt);
+        return 0 == epoll_ctl(_efd, EPOLL_CTL_ADD, , &evt);
     } catch (const std::exception&) {
         // TODO
     }
@@ -49,12 +53,12 @@ bool Epoll::Add(int fd)
     return false;
 }
 
-bool Epoll::Mod(int fd)
+bool Epoll::Mod(ConnEvent* ce)
 {
     return false;
 }
 
-bool Epoll::Del(int fd)
+bool Epoll::Del(ConnEvent* ce)
 {
     try {
         return 0 == epoll_ctl(_efd, EPOLL_CTL_ADD, fd, nullptr);

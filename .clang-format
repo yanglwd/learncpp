@@ -3,6 +3,7 @@ BasedOnStyle: LLVM
 Language: Cpp
 IndentWidth: 4
 ColumnLimit: 0
+AlignConsecutiveDeclarations: true
 DerivePointerAlignment: true
 SpacesInContainerLiterals: false
 SpaceBeforeAssignmentOperators: true

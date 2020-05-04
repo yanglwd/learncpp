@@ -21,4 +21,7 @@ private:
     Socket* _socket{nullptr};
 };
 
+using SHARED_CONN = std::shared_ptr<Conn>;
+using WEAK_CONN = std::weak_ptr<Conn>;
+
 } // namespace CoNet

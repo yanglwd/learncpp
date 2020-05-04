@@ -60,28 +60,11 @@ bool Socket::Init()
 
 void Socket::Destroy()
 {
-    close(_fd);
-}
-
-bool Socket::Send(char* data, uint32_t len)
-{
-    for (;;) {
-        int n = write(_fd, data, len);
-        if (n < 0) {
-            if (EAGAIN == errno) {
-                std::shared_ptr<Epoll> ep = _epoll.lock();
-                ep->Add(Fd());
-            } else {
-                return false;
-            }
-        }
+    if (-1 != _fd) {
+        close(_fd);
     }
-    return true;
-}
 
-bool Socket::Recv(char* buffer, uint32_t& len)
-{
-    return true;
+    _fd = -1;
 }
 
 } // namespace CoNet
